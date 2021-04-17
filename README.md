@@ -12,6 +12,7 @@ To install the existing overlay:
 
 To build the overlay and install it:
 
+~# wget sarpi.penthux.net/files/extra/ds3234-rpi-dtbo.tar.xz  
 ~# tar -xvJf ds3234-rpi-dtbo.tar.xz  
 ~# cd ds3234-rpi-dtbo  
 ~# make && make install 

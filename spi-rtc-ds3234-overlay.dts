@@ -1,0 +1,32 @@
+/* spi-rtc-ds3234-overlay.dts Device Tree Source
+   Raspberry Pi DTB overlay for DS3234 RTC
+   Exaga - sarpi.penthux.net - 15 April 2021 */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2835";
+
+	fragment@0 {
+		target = <&spidev0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			ds3234@0 {
+				compatible = "ds3234";
+				spi-max-frequency = <500000>;
+				reg = <0>;
+			};
+		};
+	};
+};

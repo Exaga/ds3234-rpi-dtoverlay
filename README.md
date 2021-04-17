@@ -12,5 +12,5 @@ To install the existing overlay:
 
 To build the overlay and install it:
 
-root@slackware:~/ds3234-rpi-dtbo# make && make install 
+~# make && make install 
 

@@ -37,7 +37,7 @@ Use a text editor to open the /boot/config.txt file:
 ```
 ~# nano -w /boot/config.txt 
 ```
-Enable the SPI interface and load the DS3234 RTC DT overlay in /boot/config.txt at boot time by editing/adding the following lines to the file:
+Enable the SPI interface and load the DS3234 RTC DT overlay in /boot/config.txt at boot time by editing/adding the following lines in this file:
 ```
 # Uncomment some or all of these to enable the optional hardware interfaces
 #dtparam=i2c_arm=on

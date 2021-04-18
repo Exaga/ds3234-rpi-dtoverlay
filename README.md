@@ -8,17 +8,27 @@ Installation guide URL: https://sarpi.penthux.net/index.php?p=rtc-ds3234
 
 ### Instructions
 
-To install the existing overlay as 'root' user:
+The following should be done by 'root' user ...
+
+To install the existing spi-rtc-ds3234.dtbo DT overlay:
 ```
 ~# wget https://slackware.uk/sarpi/extra/ds3234-rpi-dtbo.tar.xz  
 ~# tar -xvJf ds3234-rpi-dtbo.tar.xz  
 ~# cp -av ds3234-rpi-dtbo/spi-rtc-ds3234.dtbo /boot/overlays/  
 ```
-To build the overlay and install it:
+Using Makefile to build the spi-rtc-ds3234.dtbo DT overlay and install it:
 ```
 ~# wget https://slackware.uk/sarpi/extra/ds3234-rpi-dtbo.tar.xz  
 ~# tar -xvJf ds3234-rpi-dtbo.tar.xz  
 ~# cd ds3234-rpi-dtbo  
 ~# make && make install 
+```
+Manually build the spi-rtc-ds3234.dtbo DT overlay and install it:
+```
+~# wget https://slackware.uk/sarpi/extra/ds3234-rpi-dtbo.tar.xz  
+~# tar -xvJf ds3234-rpi-dtbo.tar.xz  
+~# cd ds3234-rpi-dtbo  
+~# dtc -@ -I dts -O dtb -o spi-rtc-ds3234.dtbo spi-rtc-ds3234-overlay.dts  
+~# cp -av spi-rtc-ds3234.dtbo /boot/overlays/  
 ```
 

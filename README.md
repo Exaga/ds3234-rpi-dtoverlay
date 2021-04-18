@@ -47,4 +47,5 @@ dtparam=spi=on
 # Uncomment to load the DS3234 DT overlay
 dtoverlay=spi-rtc-ds3234 
 ```
+Save and exit the /boot/config.txt file. Reboot the system.
 

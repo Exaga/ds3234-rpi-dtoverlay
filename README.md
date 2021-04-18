@@ -31,4 +31,20 @@ Manually build the spi-rtc-ds3234.dtbo DT overlay and install it:
 ~# dtc -@ -I dts -O dtb -o spi-rtc-ds3234.dtbo spi-rtc-ds3234-overlay.dts  
 ~# cp -av spi-rtc-ds3234.dtbo /boot/overlays/  
 ```
+#### Configure /boot/config.txt
+
+Use a text editor to open the /boot/config.txt file:
+```
+~# nano -w /boot/config.txt 
+```
+Enable the SPI interface and load the DS3234 RTC DT overlay in /boot/config.txt at boot time by editing/adding the following lines to the file:
+```
+# Uncomment some or all of these to enable the optional hardware interfaces
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+dtparam=spi=on
+
+# Uncomment to load the DS3234 DT overlay
+dtoverlay=spi-rtc-ds3234 
+```
 

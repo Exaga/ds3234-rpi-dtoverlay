@@ -1,19 +1,53 @@
-SARPi Project - Slackware ARM on a Raspberry Pi
+## SARPi Project - Slackware ARM on a Raspberry Pi
 
-Install a DS3234 Real Time Clock on a Raspberry Pi running Slackware ARM
+### The DS3234 RTC is now fully supprted in the official Raspberry Pi device-tree blobs!
 
-How To URL: https://sarpi.penthux.net/index.php?p=rtc-ds3234
+Device Tree overlay for a DS3234 RTC on a Raspberry Pi.
 
-To install the existing overlay:
+Part of the "Install a DS3234 Real Time Clock on a Raspberry Pi running Slackware ARM" mini-project.
 
-~# wget sarpi.penthux.net/files/extra/ds3234-rpi-dtbo.tar.xz  
+Installation guide URL: https://sarpi.penthux.net/index.php?p=rtc-ds3234
+
+### Instructions
+
+The following should be done by 'root' user ...
+
+To install the existing spi-rtc-ds3234.dtbo DT overlay:
+```
+~# curl -O https://slackware.uk/sarpi/extra/ds3234-rpi-dtbo.tar.xz  
 ~# tar -xvJf ds3234-rpi-dtbo.tar.xz  
 ~# cp -av ds3234-rpi-dtbo/spi-rtc-ds3234.dtbo /boot/overlays/  
-
-To build the overlay and install it:
-
-~# wget sarpi.penthux.net/files/extra/ds3234-rpi-dtbo.tar.xz  
+```
+Using Makefile to build the spi-rtc-ds3234.dtbo DT overlay and install it:
+```
+~# curl -O https://slackware.uk/sarpi/extra/ds3234-rpi-dtbo.tar.xz  
 ~# tar -xvJf ds3234-rpi-dtbo.tar.xz  
 ~# cd ds3234-rpi-dtbo  
 ~# make && make install 
+```
+Manually build the spi-rtc-ds3234.dtbo DT overlay and install it:
+```
+~# curl -O https://slackware.uk/sarpi/extra/ds3234-rpi-dtbo.tar.xz  
+~# tar -xvJf ds3234-rpi-dtbo.tar.xz  
+~# cd ds3234-rpi-dtbo  
+~# dtc -@ -I dts -O dtb -o spi-rtc-ds3234.dtbo spi-rtc-ds3234-overlay.dts  
+~# cp -av spi-rtc-ds3234.dtbo /boot/overlays/  
+```
+#### Configuring config.txt
+
+Use a text editor to open the /boot/config.txt file:
+```
+~# nano -w /boot/config.txt 
+```
+Enable the SPI interface and load the DS3234 RTC DT overlay in /boot/config.txt at boot time by editing/adding the following lines in this file:
+```
+# Uncomment some or all of these to enable the optional hardware interfaces
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+dtparam=spi=on
+
+# Uncomment to load the DS3234 DT overlay
+dtoverlay=spi-rtc-ds3234 
+```
+Save and exit the /boot/config.txt file. Reboot the system.
 

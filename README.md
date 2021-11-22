@@ -1,6 +1,6 @@
 ## SARPi Project - Slackware ARM on a Raspberry Pi
 
-### The DS3234 RTC is now fully supprted in the official Raspberry Pi device-tree blobs!
+### The DS3234 RTC is now fully supported in the official Raspberry Pi device-tree blobs!
 
 Device Tree overlay for a DS3234 RTC on a Raspberry Pi.
 
